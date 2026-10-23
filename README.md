@@ -27,15 +27,20 @@ Run locally with your own Microsoft Advertising credentials and a client that su
 
 ## What's new
 
+<!-- release-history:start -->
 **[v1.0.0: First standalone release](https://github.com/get-mcp-ads/bing-ads-mcp-server/releases/tag/v1.0.0) · October 23, 2026**
 
-- Port the native Microsoft Advertising tools of the getmcpads gateway, with their ownership checks and paused creation.
-- Add `bing_list_accounts` for account discovery limited to the configured accounts.
-- Read credentials from `BING_ADS_*` variables and renew access tokens in memory only.
-- Default to read-only, preview every write and never retry an uncertain write.
-- Use fixed Microsoft hosts, no redirects, timeouts, bounded responses and credential redaction.
+- First standalone release, ported from the native Microsoft Advertising tools of the getmcpads gateway at revision 3e1c2c8.
+- 20 read tools: account discovery, campaigns, ad groups, ads, keywords, targeting, audiences, UET tags, conversion goals, media, videos, Performance Max asset groups, image inventory, write and report schemas, and asynchronous reports.
+- 23 write tools, disabled by default: create and update campaigns, ad groups, ads, keywords and audiences, targeting criteria, asset groups, UET tags and conversion goals, renames, image upload and video import. Every write previews unless `confirm: true`; new entities are created Paused.
+- Credentials come from `BING_ADS_*` environment variables. Access tokens are renewed from the refresh token in memory only.
+- Explicit account allowlist with an owning-customer check, fixed API and token hosts, no redirects, timeouts, bounded responses and credential redaction.
+- Requires Node.js 22.23.4, 24.22.1, 26.12.1 or a newer release of those lines, and warns on stderr otherwise.
 
-[Full changelog](CHANGELOG.md) · [Source synchronization details](SOURCE_SYNC.md) · [All releases](https://github.com/get-mcp-ads/bing-ads-mcp-server/releases)
+[Full changelog](CHANGELOG.md) · [All releases](https://github.com/get-mcp-ads/bing-ads-mcp-server/releases)
+<!-- release-history:end -->
+
+Source synchronization: [SOURCE_SYNC.md](SOURCE_SYNC.md).
 
 ### Upgrade notes
 

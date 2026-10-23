@@ -22,3 +22,5 @@ Each step skips cleanly when its target already holds the version, so a
 partial release can be rerun from the Actions tab with the existing tag.
 The npm package needs a trusted publisher on npmjs.com that points at this
 repository and `release.yml`.
+
+Before tagging, add the release to CHANGELOG.md as `## X.Y.Z - YYYY-MM-DD - Title`, then run `npm run release-history`. The README shows every release from the changelog, and the test suite fails when it falls behind.
