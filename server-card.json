@@ -1,0 +1,3705 @@
+{
+  "serverInfo": {
+    "name": "@getmcpads/bing-ads-mcp-server",
+    "title": "Microsoft Advertising (Bing Ads) MCP server: 20 read tools, 23 opt-in preview-first writes.",
+    "version": "1.0.0",
+    "websiteUrl": "https://www.getmcpads.com/tools/bing-ads",
+    "icons": [
+      {
+        "src": "https://mcp.getmcpads.com/icon.svg",
+        "mimeType": "image/svg+xml"
+      }
+    ]
+  },
+  "tools": [
+    {
+      "name": "bing_list_accounts",
+      "title": "bing list accounts",
+      "description": "List the accounts in BING_ADS_ACCOUNT_IDS that this user can reach, with name, number, currency, status and owning customer. Discovery pages through every account Microsoft returns, then keeps only the configured ones.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_health_check",
+      "title": "bing health check",
+      "description": "Read the selected account and confirm the environment, owning customer and currency. This does not validate every feature.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          }
+        },
+        "required": [
+          "accountId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_campaigns",
+      "title": "bing get campaigns",
+      "description": "Read native campaign configuration, budget, settings and status for one campaign type. Repeat for other types to inventory the whole account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Campaign type to read. Call once per type for a full inventory."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignType"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_ad_groups",
+      "title": "bing get ad groups",
+      "description": "Read ad groups and their native configuration in an owned campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_ads",
+      "title": "bing get ads",
+      "description": "Read ads with their native creative assets, URLs and status. adTypes controls which formats Microsoft returns.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          },
+          "adTypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ResponsiveSearch",
+                "ResponsiveAd",
+                "DynamicSearch",
+                "Product",
+                "AppInstall",
+                "ExpandedText",
+                "Text"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 7,
+            "description": "Ad formats to return. Microsoft omits formats that are not listed."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId",
+          "adTypes"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_keywords",
+      "title": "bing get keywords",
+      "description": "Read keywords, match types, bids and status from an owned ad group.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_targeting",
+      "title": "bing get targeting",
+      "description": "Read configured campaign or ad group targeting for one criterion type, inclusions and exclusions included. This is configuration, not demographic performance.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Optional ad group ID. Omit it to read campaign-level criteria."
+          },
+          "criterionType": {
+            "type": "string",
+            "enum": [
+              "Age",
+              "Gender",
+              "DayTime",
+              "Device",
+              "Location",
+              "LocationIntent",
+              "Radius",
+              "RemarketingList",
+              "CustomAudience",
+              "InMarketAudience",
+              "ProductAudience",
+              "Webpage",
+              "ProductPartition"
+            ],
+            "description": "Criterion type to read. Call once per type."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "criterionType"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_audiences",
+      "title": "bing get audiences",
+      "description": "Read audience configuration for one audience type. An empty audience does not establish that it can be matched or targeted.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "RemarketingList",
+              "CustomAudience",
+              "InMarketAudience",
+              "ProductAudience",
+              "CombinedList",
+              "CustomerList"
+            ],
+            "description": "Audience type to read."
+          },
+          "audienceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Numeric Microsoft Advertising ID."
+            },
+            "minItems": 1,
+            "maxItems": 100,
+            "description": "Optional audience IDs. Omit to read every audience of this type."
+          }
+        },
+        "required": [
+          "accountId",
+          "type"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_uet_tags",
+      "title": "bing get uet tags",
+      "description": "Read UET tracking tag configuration. Nothing is installed on a website.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "tagIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Numeric Microsoft Advertising ID."
+            },
+            "minItems": 1,
+            "maxItems": 100,
+            "description": "Optional UET tag IDs. Omit to read every tag."
+          }
+        },
+        "required": [
+          "accountId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_conversion_goals",
+      "title": "bing get conversion goals",
+      "description": "Read conversion goal configuration. This does not establish that conversions are being recorded.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "goalIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Numeric Microsoft Advertising ID."
+            },
+            "minItems": 1,
+            "maxItems": 100,
+            "description": "Optional conversion goal IDs. Omit to read every goal of this type."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Url",
+              "Event",
+              "Duration",
+              "PagesViewedPerVisit",
+              "OfflineConversion",
+              "AppInstall"
+            ],
+            "description": "Conversion goal type to read."
+          }
+        },
+        "required": [
+          "accountId",
+          "type"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_media",
+      "title": "bing get media",
+      "description": "Read metadata of uploaded media by ID in the selected account, including image representations and their URLs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "mediaIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Numeric Microsoft Advertising ID."
+            },
+            "minItems": 1,
+            "maxItems": 100,
+            "description": "Media IDs to read, up to 100."
+          }
+        },
+        "required": [
+          "accountId",
+          "mediaIds"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_videos",
+      "title": "bing get videos",
+      "description": "Read account video assets and processing status. Active means the media is ready, not that an ad is delivering.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "videoIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Numeric Microsoft Advertising ID."
+            },
+            "minItems": 1,
+            "maxItems": 100,
+            "description": "Optional video IDs. Omit to page through every video."
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "Zero-based page index."
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 50,
+            "description": "Videos per page, 1 to 100."
+          }
+        },
+        "required": [
+          "accountId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_asset_groups",
+      "title": "bing get asset groups",
+      "description": "Read Performance Max asset groups with their native creative configuration and status.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric Performance Max campaign ID in the selected account."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_geo_file",
+      "title": "bing get geo file",
+      "description": "Get Microsoft's current geographic targeting file link. Use its Location IDs; never reuse Google location IDs. The link is returned as data and not downloaded.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          }
+        },
+        "required": [
+          "accountId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_list_ad_creatives",
+      "title": "bing list ad creatives",
+      "description": "List image assets linked to account-owned ads and Performance Max asset groups, with parent IDs and names. Bounded scan; no inferred delivery, video contents or KPI attribution.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Numeric Microsoft Advertising ID."
+            },
+            "minItems": 1,
+            "maxItems": 20,
+            "description": "Optional campaign IDs to scan, up to 20."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 60,
+            "default": 24,
+            "description": "Maximum image assets to return."
+          },
+          "maxCampaigns": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "default": 10,
+            "description": "Maximum campaigns to scan."
+          },
+          "maxGroups": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 30,
+            "default": 15,
+            "description": "Maximum ad groups to scan across those campaigns."
+          }
+        },
+        "required": [
+          "accountId"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_reporting_schema",
+      "title": "bing get reporting schema",
+      "description": "Read the pinned report types and the native columns each one supports, with official references. A column in this list is not evidence of populated data.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_write_schema",
+      "title": "bing get write schema",
+      "description": "Read the pinned native fields of a Microsoft Advertising entity. Read each polymorphic object's documentation for its REST Type value. Account eligibility is separate.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "type": "string",
+            "enum": [
+              "campaign",
+              "adgroup",
+              "responsivesearchad",
+              "responsivead",
+              "dynamicsearchad",
+              "keyword",
+              "remarketinglist",
+              "image",
+              "assetgroup",
+              "urlgoal",
+              "gendercriterion",
+              "agecriterion"
+            ],
+            "description": "Entity whose native fields to read."
+          }
+        },
+        "required": [
+          "entity"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_setup_guide",
+      "title": "bing get setup guide",
+      "description": "Coverage, safety rules and known limitations of this server. Read it before claiming that a feature is or is not supported.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_insights",
+      "title": "bing get insights",
+      "description": "Submit an asynchronous Microsoft Advertising report for the selected account and return a receipt. Poll the receipt with bing_get_report. Column compatibility and sandbox data availability apply.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "reportType": {
+            "type": "string",
+            "enum": [
+              "AccountPerformanceReportRequest",
+              "CampaignPerformanceReportRequest",
+              "AdGroupPerformanceReportRequest",
+              "AdPerformanceReportRequest",
+              "KeywordPerformanceReportRequest",
+              "AgeGenderAudienceReportRequest",
+              "GeographicPerformanceReportRequest",
+              "ProductDimensionPerformanceReportRequest"
+            ],
+            "description": "Native report type. Each type supports its own columns; see bing_get_reporting_schema."
+          },
+          "aggregation": {
+            "type": "string",
+            "enum": [
+              "Daily",
+              "Summary"
+            ],
+            "default": "Daily",
+            "description": "Daily returns one row per day. Summary returns period totals; omit TimePeriod from columns to avoid splitting rows."
+          },
+          "reportTimeZone": {
+            "type": "string",
+            "enum": [
+              "PacificTimeUSCanadaTijuana",
+              "BrusselsCopenhagenMadridParis",
+              "AmsterdamBerlinBernRomeStockholmVienna",
+              "GreenwichMeanTimeDublinEdinburghLisbonLondon",
+              "EasternTimeUSCanada",
+              "CentralTimeUSCanada",
+              "MountainTimeUSCanada",
+              "Arizona",
+              "Hawaii",
+              "Alaska",
+              "OsakaSapporoTokyo",
+              "KualaLumpurSingapore",
+              "ChennaiKolkataMumbaiNewDelhi",
+              "CanberraMelbourneSydney",
+              "Brisbane",
+              "Perth",
+              "AucklandWellington"
+            ],
+            "description": "Native Microsoft reporting time zone. Omit it to keep Microsoft's default."
+          },
+          "returnOnlyCompleteData": {
+            "type": "boolean",
+            "default": false,
+            "description": "True makes Microsoft return an error instead of a report while data for the requested period is still being processed."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Optional campaign ID to scope the report. Not supported by account reports."
+          },
+          "since": {
+            "type": "string",
+            "format": "date",
+            "description": "First day of the report, YYYY-MM-DD, inclusive."
+          },
+          "until": {
+            "type": "string",
+            "format": "date",
+            "description": "Last day of the report, YYYY-MM-DD, inclusive, on or after since."
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9]{0,79}$"
+            },
+            "minItems": 1,
+            "maxItems": 50,
+            "description": "Native report columns compatible with reportType; see bing_get_reporting_schema."
+          }
+        },
+        "required": [
+          "accountId",
+          "reportType",
+          "since",
+          "until",
+          "columns"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_get_report",
+      "title": "bing get report",
+      "description": "Poll and download a report submitted by bing_get_insights for the same account. Returns up to 2,000 CSV rows as strings; narrow the range when truncated is true. Empty sandbox output is not production evidence.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "receipt": {
+            "type": "string",
+            "maxLength": 3000,
+            "description": "Receipt returned by bing_get_insights in this server session. It expires after one hour."
+          }
+        },
+        "required": [
+          "accountId",
+          "receipt"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_create_campaign",
+      "title": "bing create campaign",
+      "description": "Create a Microsoft Advertising campaign with native fields. Preview by default. Campaigns are created Paused. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_update_campaign",
+      "title": "bing update campaign",
+      "description": "Update a Microsoft Advertising campaign with native fields. Preview by default. Setting Status to Active can start spending. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "id": {
+            "type": "string",
+            "description": "Numeric ID of the campaign to update."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of the campaign being updated, used to verify ownership."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "id",
+          "campaignType",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_create_ad_group",
+      "title": "bing create ad group",
+      "description": "Create a Microsoft Advertising ad group with native fields. Preview by default. Ad groups are created Paused. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_update_ad_group",
+      "title": "bing update ad group",
+      "description": "Update a Microsoft Advertising ad group with native fields. Preview by default. Setting Status to Active can start spending. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "id": {
+            "type": "string",
+            "description": "Numeric ID of the ad group to update."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "id",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_create_ad",
+      "title": "bing create ad",
+      "description": "Create a Microsoft Advertising ad with native fields. Preview by default. Ads are created Paused. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_update_ad",
+      "title": "bing update ad",
+      "description": "Update a Microsoft Advertising ad with native fields. Preview by default. Setting Status to Active can start spending. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          },
+          "id": {
+            "type": "string",
+            "description": "Numeric ID of the ad to update."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId",
+          "id",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_create_keyword",
+      "title": "bing create keyword",
+      "description": "Create a Microsoft Advertising keyword with native fields. Preview by default. Keywords are created Paused. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_update_keyword",
+      "title": "bing update keyword",
+      "description": "Update a Microsoft Advertising keyword with native fields. Preview by default. Setting Status to Active can start spending. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          },
+          "id": {
+            "type": "string",
+            "description": "Numeric ID of the keyword to update."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId",
+          "id",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_create_audience",
+      "title": "bing create audience",
+      "description": "Create a Microsoft Advertising audience with native fields. Preview by default. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_update_audience",
+      "title": "bing update audience",
+      "description": "Update a Microsoft Advertising audience with native fields. Preview by default. Setting Status to Active can start spending. Read bing_get_write_schema and the current configuration first.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "id": {
+            "type": "string",
+            "description": "Numeric ID of the audience to update."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "id",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_rename_campaign",
+      "title": "bing rename campaign",
+      "description": "Rename a Microsoft Advertising campaign. The name is the only thing that changes. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "description": "New name. This is the only field the call changes. 1 to 128 characters, unique among its siblings."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_rename_ad_group",
+      "title": "bing rename ad group",
+      "description": "Rename a Microsoft Advertising ad group. The name is the only thing that changes. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "description": "New name. This is the only field the call changes. 1 to 256 characters, unique among its siblings."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId",
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_rename_account",
+      "title": "bing rename account",
+      "description": "Rename the selected Microsoft Advertising account. Microsoft only accepts a full account update, so the account is read and written back unchanged except for its name. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100,
+            "description": "New name. This is the only field the call changes. 3 to 100 characters, unique among its siblings."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_import_video",
+      "title": "bing import video",
+      "description": "Import a video from your directly downloadable public HTTPS file into the selected account. Microsoft fetches and transcodes it asynchronously; a returned ID does not mean it is ready. Poll bing_get_videos. Does not create or activate an ad. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "sourceUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Public, directly downloadable HTTPS video file that you own. Microsoft fetches it; this server does not."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "description": "Description that identifies this video asset in the account."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "sourceUrl",
+          "description"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_update_video",
+      "title": "bing update video",
+      "description": "Update the description of an account-owned video asset. Does not change delivery or replace the video source. Preview by default; read back with bing_get_videos.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "videoId": {
+            "type": "string",
+            "description": "Numeric ID of a video in the selected account."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "description": "Replacement description for the video."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "videoId",
+          "description"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_upload_image",
+      "title": "bing upload image",
+      "description": "Upload image bytes to the selected account's media library. Does not create or activate an ad. The preview reports the encoded length without repeating the image.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "base64": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 6000000,
+            "pattern": "^[A-Za-z0-9+/]+={0,2}$",
+            "description": "Base64 image bytes without a data URL prefix, up to 6 million encoded characters."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "base64"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_create_asset_group",
+      "title": "bing create asset group",
+      "description": "Create a Paused Performance Max asset group with text and image assets. Requires an eligible campaign and every required asset. A local preview is not provider validation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric Performance Max campaign ID in the selected account."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_create_uet_tag",
+      "title": "bing create uet tag",
+      "description": "Create a UET tag configuration. Nothing is installed on a website. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_create_conversion_goal",
+      "title": "bing create conversion goal",
+      "description": "Create a conversion goal configuration. It is created Paused, scoped to the account and excluded from bidding. No event is sent. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_add_campaign_targeting",
+      "title": "bing add campaign targeting",
+      "description": "Add one native campaign targeting criterion. Read current targeting first. Use Targets for demographic, location and device criteria and Audience for audience associations. Criteria that are not sent are left unchanged. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "criterionType": {
+            "type": "string",
+            "enum": [
+              "Targets",
+              "Audience",
+              "Webpage",
+              "ProductPartition"
+            ],
+            "description": "Write category: Targets for demographics, location and devices; Audience for audience associations. Reads use the specific criterion type."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "criterionType",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_update_campaign_targeting",
+      "title": "bing update campaign targeting",
+      "description": "Update one native campaign targeting criterion. Read current targeting first. Use Targets for demographic, location and device criteria and Audience for audience associations. Criteria that are not sent are left unchanged. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "criterionType": {
+            "type": "string",
+            "enum": [
+              "Targets",
+              "Audience",
+              "Webpage",
+              "ProductPartition"
+            ],
+            "description": "Write category: Targets for demographics, location and devices; Audience for audience associations. Reads use the specific criterion type."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "criterionType",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_add_ad_group_targeting",
+      "title": "bing add ad group targeting",
+      "description": "Add one native ad group targeting criterion. Read current targeting first. Use Targets for demographic, location and device criteria and Audience for audience associations. Criteria that are not sent are left unchanged. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          },
+          "criterionType": {
+            "type": "string",
+            "enum": [
+              "Targets",
+              "Audience",
+              "Webpage",
+              "ProductPartition"
+            ],
+            "description": "Write category: Targets for demographics, location and devices; Audience for audience associations. Reads use the specific criterion type."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId",
+          "criterionType",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "bing_update_ad_group_targeting",
+      "title": "bing update ad group targeting",
+      "description": "Update one native ad group targeting criterion. Read current targeting first. Use Targets for demographic, location and device criteria and Audience for audience associations. Criteria that are not sent are left unchanged. Preview by default.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Numeric campaign ID in the selected account."
+          },
+          "campaignType": {
+            "type": "string",
+            "enum": [
+              "Search",
+              "Shopping",
+              "Audience",
+              "PerformanceMax",
+              "Hotel"
+            ],
+            "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
+          },
+          "adGroupId": {
+            "type": "string",
+            "description": "Numeric ad group ID in the selected campaign."
+          },
+          "criterionType": {
+            "type": "string",
+            "enum": [
+              "Targets",
+              "Audience",
+              "Webpage",
+              "ProductPartition"
+            ],
+            "description": "Write category: Targets for demographics, location and devices; Audience for audience associations. Reads use the specific criterion type."
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
+          },
+          "confirm": {
+            "type": "boolean",
+            "default": false,
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+          }
+        },
+        "required": [
+          "accountId",
+          "campaignId",
+          "campaignType",
+          "adGroupId",
+          "criterionType",
+          "data"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Original tool result: parsed JSON when the text is JSON, otherwise the text or multiple MCP content blocks. Provider fields depend on the selected query."
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "Microsoft Advertising guide",
+      "uri": "bing-ads://guide"
+    }
+  ],
+  "prompts": []
+}
