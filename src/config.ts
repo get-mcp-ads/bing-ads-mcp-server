@@ -20,14 +20,14 @@ export function isBingId(value: string): boolean {
 const id = z.string().refine(isBingId);
 const schema = z.object({
   environment: z.enum(["production", "sandbox"]),
-  identityProvider: z.enum(["Microsoft", "Google"]).default("Microsoft"),
+  identityProvider: z.enum(["Microsoft", "Google"]).prefault("Microsoft"),
   developerToken: z.string().min(1).max(200).optional(),
   clientId: z.string().min(1).max(200),
   clientSecret: z.string().min(1).max(1000).optional(),
   refreshToken: z.string().min(1).max(20000),
-  tenant: z.string().regex(/^[A-Za-z0-9.-]{1,100}$/).default("common"),
+  tenant: z.string().regex(/^[A-Za-z0-9.-]{1,100}$/).prefault("common"),
   allowedAccounts: z.record(id, id),
-  enableWrites: z.boolean().default(false),
+  enableWrites: z.boolean().prefault(false),
 });
 
 export type BingConfig = z.output<typeof schema>;

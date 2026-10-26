@@ -29,8 +29,8 @@ const campaignType = z.enum(["Search", "Shopping", "Audience", "PerformanceMax",
 const account = { accountId };
 const campaign = { ...account, campaignId: id(D.campaignId!), campaignType };
 const group = { ...campaign, adGroupId: id(D.adGroupId!) };
-const native = z.record(z.unknown()).describe(D.data!);
-const confirm = z.boolean().default(false).describe(D.confirm!);
+const native = z.record(z.string(), z.unknown()).describe(D.data!);
+const confirm = z.boolean().prefault(false).describe(D.confirm!);
 const REPORT_TYPES = Object.keys(reportColumns.reports) as [keyof typeof reportColumns.reports, ...(keyof typeof reportColumns.reports)[]];
 const ENTITIES = Object.keys(schema.entities) as [keyof typeof schema.entities, ...(keyof typeof schema.entities)[]];
 
@@ -153,8 +153,8 @@ export function registerBingReads(collector: Collector, config: BingConfig, api:
   add("get_videos", "Read account video assets and processing status. Active means the media is ready, not that an ad is delivering.", {
     ...account,
     videoIds: ids("Optional video IDs. Omit to page through every video.").optional(),
-    page: z.number().int().min(0).default(0).describe("Zero-based page index."),
-    pageSize: z.number().int().min(1).max(100).default(50).describe("Videos per page, 1 to 100."),
+    page: z.number().int().min(0).prefault(0).describe("Zero-based page index."),
+    pageSize: z.number().int().min(1).max(100).prefault(50).describe("Videos per page, 1 to 100."),
   }, async a => {
     await own(a); return call(a, "getvideosbyids", { VideoIds: a.videoIds ?? null, PageInfo: { Index: a.page, Size: a.pageSize } });
   });
@@ -167,9 +167,9 @@ export function registerBingReads(collector: Collector, config: BingConfig, api:
   add("list_ad_creatives", "List image assets linked to account-owned ads and Performance Max asset groups, with parent IDs and names. Bounded scan; no inferred delivery, video contents or KPI attribution.", {
     ...account,
     campaignIds: ids("Optional campaign IDs to scan, up to 20.", 20).optional(),
-    limit: z.number().int().min(1).max(60).default(24).describe("Maximum image assets to return."),
-    maxCampaigns: z.number().int().min(1).max(20).default(10).describe("Maximum campaigns to scan."),
-    maxGroups: z.number().int().min(1).max(30).default(15).describe("Maximum ad groups to scan across those campaigns."),
+    limit: z.number().int().min(1).max(60).prefault(24).describe("Maximum image assets to return."),
+    maxCampaigns: z.number().int().min(1).max(20).prefault(10).describe("Maximum campaigns to scan."),
+    maxGroups: z.number().int().min(1).max(30).prefault(15).describe("Maximum ad groups to scan across those campaigns."),
   }, async a => {
     await own(a);
     return bingAdCreatives((op, body) => call(a, op, body), String(a.accountId), { limit: Number(a.limit), maxCampaigns: Number(a.maxCampaigns), maxGroups: Number(a.maxGroups), campaignIds: a.campaignIds as string[] | undefined });
@@ -182,9 +182,9 @@ export function registerBingReads(collector: Collector, config: BingConfig, api:
   add("get_insights", "Submit an asynchronous Microsoft Advertising report for the selected account and return a receipt. Poll the receipt with bing_get_report. Column compatibility and sandbox data availability apply.", {
     ...account,
     reportType: z.enum(REPORT_TYPES).describe("Native report type. Each type supports its own columns; see bing_get_reporting_schema."),
-    aggregation: z.enum(["Daily", "Summary"]).default("Daily").describe("Daily returns one row per day. Summary returns period totals; omit TimePeriod from columns to avoid splitting rows."),
+    aggregation: z.enum(["Daily", "Summary"]).prefault("Daily").describe("Daily returns one row per day. Summary returns period totals; omit TimePeriod from columns to avoid splitting rows."),
     reportTimeZone: z.enum(Object.keys(BING_REPORT_TIMEZONES) as [string, ...string[]]).optional().describe("Native Microsoft reporting time zone. Omit it to keep Microsoft's default."),
-    returnOnlyCompleteData: z.boolean().default(false).describe("True makes Microsoft return an error instead of a report while data for the requested period is still being processed."),
+    returnOnlyCompleteData: z.boolean().prefault(false).describe("True makes Microsoft return an error instead of a report while data for the requested period is still being processed."),
     campaignId: id("Optional campaign ID to scope the report. Not supported by account reports.").optional(),
     since: z.string().date().describe("First day of the report, YYYY-MM-DD, inclusive."),
     until: z.string().date().describe("Last day of the report, YYYY-MM-DD, inclusive, on or after since."),
