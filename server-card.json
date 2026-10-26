@@ -2,7 +2,7 @@
   "serverInfo": {
     "name": "@getmcpads/bing-ads-mcp-server",
     "title": "Microsoft Advertising (Bing Ads) MCP server: 20 read tools, 23 opt-in preview-first writes.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "websiteUrl": "https://www.getmcpads.com/tools/bing-ads",
     "icons": [
       {
@@ -19,8 +19,8 @@
       "inputSchema": {
         "type": "object",
         "properties": {},
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -30,7 +30,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -55,8 +55,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -83,8 +83,8 @@
         "required": [
           "accountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -94,7 +94,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -119,8 +119,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -159,8 +159,8 @@
           "accountId",
           "campaignType"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -170,7 +170,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -195,8 +195,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -240,8 +240,8 @@
           "campaignId",
           "campaignType"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -251,7 +251,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -276,8 +276,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -320,6 +320,8 @@
             "description": "Numeric ad group ID in the selected campaign."
           },
           "adTypes": {
+            "minItems": 1,
+            "maxItems": 7,
             "type": "array",
             "items": {
               "type": "string",
@@ -333,8 +335,6 @@
                 "Text"
               ]
             },
-            "minItems": 1,
-            "maxItems": 7,
             "description": "Ad formats to return. Microsoft omits formats that are not listed."
           }
         },
@@ -345,8 +345,8 @@
           "adGroupId",
           "adTypes"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -356,7 +356,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -381,8 +381,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -431,8 +431,8 @@
           "campaignType",
           "adGroupId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -442,7 +442,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -467,8 +467,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -507,8 +507,8 @@
             "description": "Native type of campaignId, used to verify that it belongs to the account. Dynamic Search campaigns use Search with DynamicSearchAdsSetting."
           },
           "adGroupId": {
-            "type": "string",
-            "description": "Optional ad group ID. Omit it to read campaign-level criteria."
+            "description": "Optional ad group ID. Omit it to read campaign-level criteria.",
+            "type": "string"
           },
           "criterionType": {
             "type": "string",
@@ -536,8 +536,8 @@
           "campaignType",
           "criterionType"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -547,7 +547,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -572,8 +572,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -609,22 +609,22 @@
             "description": "Audience type to read."
           },
           "audienceIds": {
+            "description": "Optional audience IDs. Omit to read every audience of this type.",
+            "minItems": 1,
+            "maxItems": 100,
             "type": "array",
             "items": {
               "type": "string",
               "description": "Numeric Microsoft Advertising ID."
-            },
-            "minItems": 1,
-            "maxItems": 100,
-            "description": "Optional audience IDs. Omit to read every audience of this type."
+            }
           }
         },
         "required": [
           "accountId",
           "type"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -634,7 +634,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -659,8 +659,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -684,21 +684,21 @@
             "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
           },
           "tagIds": {
+            "description": "Optional UET tag IDs. Omit to read every tag.",
+            "minItems": 1,
+            "maxItems": 100,
             "type": "array",
             "items": {
               "type": "string",
               "description": "Numeric Microsoft Advertising ID."
-            },
-            "minItems": 1,
-            "maxItems": 100,
-            "description": "Optional UET tag IDs. Omit to read every tag."
+            }
           }
         },
         "required": [
           "accountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -708,7 +708,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -733,8 +733,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -758,14 +758,14 @@
             "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
           },
           "goalIds": {
+            "description": "Optional conversion goal IDs. Omit to read every goal of this type.",
+            "minItems": 1,
+            "maxItems": 100,
             "type": "array",
             "items": {
               "type": "string",
               "description": "Numeric Microsoft Advertising ID."
-            },
-            "minItems": 1,
-            "maxItems": 100,
-            "description": "Optional conversion goal IDs. Omit to read every goal of this type."
+            }
           },
           "type": {
             "type": "string",
@@ -784,8 +784,8 @@
           "accountId",
           "type"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -795,7 +795,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -820,8 +820,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -845,13 +845,13 @@
             "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
           },
           "mediaIds": {
+            "minItems": 1,
+            "maxItems": 100,
             "type": "array",
             "items": {
               "type": "string",
               "description": "Numeric Microsoft Advertising ID."
             },
-            "minItems": 1,
-            "maxItems": 100,
             "description": "Media IDs to read, up to 100."
           }
         },
@@ -859,8 +859,8 @@
           "accountId",
           "mediaIds"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -870,7 +870,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -895,8 +895,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -920,34 +920,35 @@
             "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
           },
           "videoIds": {
+            "description": "Optional video IDs. Omit to page through every video.",
+            "minItems": 1,
+            "maxItems": 100,
             "type": "array",
             "items": {
               "type": "string",
               "description": "Numeric Microsoft Advertising ID."
-            },
-            "minItems": 1,
-            "maxItems": 100,
-            "description": "Optional video IDs. Omit to page through every video."
+            }
           },
           "page": {
+            "description": "Zero-based page index.",
+            "default": 0,
             "type": "integer",
             "minimum": 0,
-            "default": 0,
-            "description": "Zero-based page index."
+            "maximum": 9007199254740991
           },
           "pageSize": {
+            "description": "Videos per page, 1 to 100.",
+            "default": 50,
             "type": "integer",
             "minimum": 1,
-            "maximum": 100,
-            "default": 50,
-            "description": "Videos per page, 1 to 100."
+            "maximum": 100
           }
         },
         "required": [
           "accountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -957,7 +958,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -982,8 +983,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1015,8 +1016,8 @@
           "accountId",
           "campaignId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1026,7 +1027,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1051,8 +1052,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1079,8 +1080,8 @@
         "required": [
           "accountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1090,7 +1091,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1115,8 +1116,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1140,42 +1141,42 @@
             "description": "Account ID listed in BING_ADS_ACCOUNT_IDS. Use the numeric ID, not the eight-character account number shown in the web app."
           },
           "campaignIds": {
+            "description": "Optional campaign IDs to scan, up to 20.",
+            "minItems": 1,
+            "maxItems": 20,
             "type": "array",
             "items": {
               "type": "string",
               "description": "Numeric Microsoft Advertising ID."
-            },
-            "minItems": 1,
-            "maxItems": 20,
-            "description": "Optional campaign IDs to scan, up to 20."
+            }
           },
           "limit": {
+            "description": "Maximum image assets to return.",
+            "default": 24,
             "type": "integer",
             "minimum": 1,
-            "maximum": 60,
-            "default": 24,
-            "description": "Maximum image assets to return."
+            "maximum": 60
           },
           "maxCampaigns": {
+            "description": "Maximum campaigns to scan.",
+            "default": 10,
             "type": "integer",
             "minimum": 1,
-            "maximum": 20,
-            "default": 10,
-            "description": "Maximum campaigns to scan."
+            "maximum": 20
           },
           "maxGroups": {
+            "description": "Maximum ad groups to scan across those campaigns.",
+            "default": 15,
             "type": "integer",
             "minimum": 1,
-            "maximum": 30,
-            "default": 15,
-            "description": "Maximum ad groups to scan across those campaigns."
+            "maximum": 30
           }
         },
         "required": [
           "accountId"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1185,7 +1186,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1210,8 +1211,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1230,8 +1231,8 @@
       "inputSchema": {
         "type": "object",
         "properties": {},
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1241,7 +1242,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1266,8 +1267,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1308,8 +1309,8 @@
         "required": [
           "entity"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1319,7 +1320,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1344,8 +1345,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1364,8 +1365,8 @@
       "inputSchema": {
         "type": "object",
         "properties": {},
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1375,7 +1376,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1400,8 +1401,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1439,15 +1440,16 @@
             "description": "Native report type. Each type supports its own columns; see bing_get_reporting_schema."
           },
           "aggregation": {
+            "description": "Daily returns one row per day. Summary returns period totals; omit TimePeriod from columns to avoid splitting rows.",
+            "default": "Daily",
             "type": "string",
             "enum": [
               "Daily",
               "Summary"
-            ],
-            "default": "Daily",
-            "description": "Daily returns one row per day. Summary returns period totals; omit TimePeriod from columns to avoid splitting rows."
+            ]
           },
           "reportTimeZone": {
+            "description": "Native Microsoft reporting time zone. Omit it to keep Microsoft's default.",
             "type": "string",
             "enum": [
               "PacificTimeUSCanadaTijuana",
@@ -1467,36 +1469,37 @@
               "Brisbane",
               "Perth",
               "AucklandWellington"
-            ],
-            "description": "Native Microsoft reporting time zone. Omit it to keep Microsoft's default."
+            ]
           },
           "returnOnlyCompleteData": {
-            "type": "boolean",
+            "description": "True makes Microsoft return an error instead of a report while data for the requested period is still being processed.",
             "default": false,
-            "description": "True makes Microsoft return an error instead of a report while data for the requested period is still being processed."
+            "type": "boolean"
           },
           "campaignId": {
-            "type": "string",
-            "description": "Optional campaign ID to scope the report. Not supported by account reports."
+            "description": "Optional campaign ID to scope the report. Not supported by account reports.",
+            "type": "string"
           },
           "since": {
             "type": "string",
             "format": "date",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$",
             "description": "First day of the report, YYYY-MM-DD, inclusive."
           },
           "until": {
             "type": "string",
             "format": "date",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$",
             "description": "Last day of the report, YYYY-MM-DD, inclusive, on or after since."
           },
           "columns": {
+            "minItems": 1,
+            "maxItems": 50,
             "type": "array",
             "items": {
               "type": "string",
               "pattern": "^[A-Za-z][A-Za-z0-9]{0,79}$"
             },
-            "minItems": 1,
-            "maxItems": 50,
             "description": "Native report columns compatible with reportType; see bing_get_reporting_schema."
           }
         },
@@ -1507,8 +1510,8 @@
           "until",
           "columns"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1518,7 +1521,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1543,8 +1546,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1577,8 +1580,8 @@
           "accountId",
           "receipt"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1588,7 +1591,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1613,8 +1616,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": true,
@@ -1639,21 +1642,24 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
           "accountId",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1663,7 +1669,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1688,8 +1694,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1729,13 +1735,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -1744,8 +1753,8 @@
           "campaignType",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1755,7 +1764,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1780,8 +1789,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1821,13 +1830,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -1836,8 +1848,8 @@
           "campaignType",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1847,7 +1859,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1872,8 +1884,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -1917,13 +1929,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -1933,8 +1948,8 @@
           "id",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -1944,7 +1959,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -1969,8 +1984,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2014,13 +2029,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2030,8 +2048,8 @@
           "adGroupId",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2041,7 +2059,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2066,8 +2084,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2115,13 +2133,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2132,8 +2153,8 @@
           "id",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2143,7 +2164,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2168,8 +2189,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2213,13 +2234,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2229,8 +2253,8 @@
           "adGroupId",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2240,7 +2264,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2265,8 +2289,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2314,13 +2338,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2331,8 +2358,8 @@
           "id",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2342,7 +2369,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2367,8 +2394,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2393,21 +2420,24 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
           "accountId",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2417,7 +2447,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2442,8 +2472,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2472,13 +2502,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2486,8 +2519,8 @@
           "id",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2497,7 +2530,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2522,8 +2555,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2568,9 +2601,9 @@
             "description": "New name. This is the only field the call changes. 1 to 128 characters, unique among its siblings."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2579,8 +2612,8 @@
           "campaignType",
           "name"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2590,7 +2623,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2615,8 +2648,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2665,9 +2698,9 @@
             "description": "New name. This is the only field the call changes. 1 to 256 characters, unique among its siblings."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2677,8 +2710,8 @@
           "adGroupId",
           "name"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2688,7 +2721,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2713,8 +2746,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2744,17 +2777,17 @@
             "description": "New name. This is the only field the call changes. 3 to 100 characters, unique among its siblings."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
           "accountId",
           "name"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2764,7 +2797,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2789,8 +2822,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2825,9 +2858,9 @@
             "description": "Description that identifies this video asset in the account."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2835,8 +2868,8 @@
           "sourceUrl",
           "description"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2846,7 +2879,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2871,8 +2904,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2906,9 +2939,9 @@
             "description": "Replacement description for the video."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -2916,8 +2949,8 @@
           "videoId",
           "description"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -2927,7 +2960,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -2952,8 +2985,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -2984,17 +3017,17 @@
             "description": "Base64 image bytes without a data URL prefix, up to 6 million encoded characters."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
           "accountId",
           "base64"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3004,7 +3037,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3029,8 +3062,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3059,13 +3092,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -3073,8 +3109,8 @@
           "campaignId",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3084,7 +3120,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3109,8 +3145,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3135,21 +3171,24 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
           "accountId",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3159,7 +3198,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3184,8 +3223,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3210,21 +3249,24 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
           "accountId",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3234,7 +3276,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3259,8 +3301,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3310,13 +3352,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -3326,8 +3371,8 @@
           "criterionType",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3337,7 +3382,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3362,8 +3407,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3413,13 +3458,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -3429,8 +3477,8 @@
           "criterionType",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3440,7 +3488,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3465,8 +3513,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3520,13 +3568,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -3537,8 +3588,8 @@
           "criterionType",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3548,7 +3599,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3573,8 +3624,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,
@@ -3628,13 +3679,16 @@
           },
           "data": {
             "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
             "additionalProperties": {},
             "description": "Native Microsoft Advertising REST fields for this entity. Read bing_get_write_schema first. REST Type values can differ from SOAP class names. Microsoft checks eligibility only on a confirmed call."
           },
           "confirm": {
-            "type": "boolean",
+            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it.",
             "default": false,
-            "description": "False returns a local preview and sends nothing. True applies this exact change, after the user approved it."
+            "type": "boolean"
           }
         },
         "required": [
@@ -3645,8 +3699,8 @@
           "criterionType",
           "data"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
@@ -3656,7 +3710,7 @@
               {
                 "type": "object",
                 "properties": {},
-                "additionalProperties": true
+                "additionalProperties": {}
               },
               {
                 "type": "array",
@@ -3681,8 +3735,8 @@
         "required": [
           "result"
         ],
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#"
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "additionalProperties": false
       },
       "annotations": {
         "readOnlyHint": false,

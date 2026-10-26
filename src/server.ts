@@ -9,7 +9,7 @@ import { validateConfig, type BingConfigInput } from "./config.js";
 import { installToolQuality } from "./tool-quality.js";
 import { registerBingReads, registerBingWrites } from "./tools.js";
 
-export const PACKAGE_VERSION = "1.0.0";
+export const PACKAGE_VERSION = "1.0.1";
 
 export function createServer(input: BingConfigInput): McpServer {
   const config = validateConfig(input);
