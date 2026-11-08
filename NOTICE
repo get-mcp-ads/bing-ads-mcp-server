@@ -1,0 +1,23 @@
+bing-ads-mcp-server
+Copyright 2026 GetMCPAds
+
+This product includes software developed at GetMCPAds (https://www.getmcpads.com).
+
+An open-source Model Context Protocol server for Microsoft Advertising, using
+the Bing Ads API. It is self-hosted and unaffiliated with Microsoft.
+
+GetMCPAds also runs a managed gateway that covers Microsoft Advertising
+alongside Meta Ads, Google Ads, TikTok Ads, Pinterest Ads, X Ads, Google
+Analytics and Search Console, with hosted OAuth and cross-platform reporting:
+https://www.getmcpads.com
+
+---
+
+src/schema.json and src/report-columns.json contain field and report column
+descriptions adapted from the Microsoft Advertising API reference
+(https://github.com/MicrosoftDocs/Advertising), published by Microsoft under
+the Creative Commons Attribution 4.0 International license.
+
+Microsoft, Microsoft Advertising and Bing are trademarks of the Microsoft group
+of companies. This project is not affiliated with, endorsed by, or sponsored by
+Microsoft Corporation.
